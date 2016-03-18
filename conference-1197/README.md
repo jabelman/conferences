@@ -1,13 +1,6 @@
-App Engine application for the Udacity training course.
+## About
+This is the app engine project for the conference organization application
 
-## Products
-- [App Engine][1]
-
-## Language
-- [Python][2]
-
-## APIs
-- [Google Cloud Endpoints][3]
 
 ## Setup Instructions
 1. Update the value of `application` in `app.yaml` to the app ID you
@@ -45,17 +38,3 @@ Sessions are their own entity and speaker is just a property of a Session. Sessi
 
 Most of the properties of a Session entity are string properties. The ones that are strings are strings because they come from user defined text. The ones that are not strings are duration, date, and startTime. Duration is a length in minutes so I made that an integer property. Date comes from specially formatted text that presumably would come from a date picker in the application. Time would also presumably be specially formatted by the application once the user picks the time from a drop down menu. Since date and time need to maintain a specific format, they are both respectively DateProperty and TimeProperty.
 
-
-Query Question
-
-The problem is that we cannot have an inequality filter on more than property. Assuming there is a finite set of session types, we could obtain a list of those types excluding the workshop type. Then when we apply the filters we only accept the results that are of a type within that set. We have avoided the inequality filter on the workshop session type.
-
-In order to implement this easily, we would replace the inequality filters with an equality filter that checks to see if the session type is in the list. We could get this list of types by specifying the list in the application and changing the typeOfSession field to a dropdown that only shows types in the list. We could also get the list by checking the list everytime a new session is added. If the new session has a type that is not in the list, it is added to the list.
-
-Query 1
-
-I created a new endpoints method called getSessionsByDuration. This query functions similarly to the query for get SessionsBySpeaker in that we are retrieving results from the entire set of Sessions.
-
-Query 2
-
-I created a new endpoints method called getSessionsByType. This query also functions similarly to the query for get SessionsBySpeaker. It does the same thing as getConferenceSessionsByType except it also retrieves results from the entire set.
